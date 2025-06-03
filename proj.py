@@ -26,8 +26,8 @@ def welcome():
     )
     texto(
         "+ Ao longo do curso, você encontrará lições simples e práticas, com quizzes e desafios divertidos "
-        "para testar seus conhecimentos.\nCada módulo tem, em média, 2h de duração, totalizando 10 horas de curso. "
-        "Ao final, você receberá um certificado de conclusão!", 0.03
+        "para testar seus conhecimentos.\nCada módulo tem, em média, 1h30 de duração, totalizando 8 horas de curso. "
+        "Ao final, você receberá um certificado de conclusão! Também poderá receber um de 100% de aproveitamento, caso gabarite tudo.", 0.03
     )
     texto(
         ">>> Lembre-se: você pode aprender no seu próprio ritmo e repetir lições sempre que quiser. "
@@ -198,8 +198,49 @@ def modulo1(usuarios, emailLogin):
     texto("• O que é segurança digital;", 0.02)
     texto("• Quais são os golpes mais comuns na internet;", 0.02)
     texto("• Como se proteger com práticas simples no dia a dia.\n", 0.02)
+    texto(
+        "\nNosso objetivo é que o(a) senhor(a) se sinta mais seguro e confiante ao usar a internet, " 
+        "aproveitando tudo o que a tecnologia pode oferecer — sem medo e sem riscos.", 0.03
+        )
+    texto("\n>>>Vamos começar!<<<", 0.02)
+    texto("\nHoje em dia, a internet está presente em muitos momentos de nossas vidas.", 0.03)
+    texto(
+        "Muitas senhoras e senhores usam o celular ou o computador para falar com a família, " 
+        "ver vídeos, fazer compras, ler notícias e até mesmo cuidar da saúde.", 0.03
+        )
+    texto(
+        "\nPor isso, é importante aprender como se proteger nesse ambiente digital. Isso se chama segurança digital."
+        " Segurança digital quer dizer cuidar bem dos seus dados e informações pessoais, como nome, documentos, contas bancárias e senhas,"
+        "para que pessoas mal-intencionadas (os chamados criminosos virtuais) não consigam roubar essas informações ou aplicar golpes.", 0.03
+    )
+    texto("\nO que são golpes online?", 0.04)
+    texto(
+        "\nNa internet, às vezes aparecem mensagens falsas que tentam enganar o(a) senhor(a)."
+        "Um exemplo comum são os e-mails ou mensagens falsas que dizem que a pessoa ganhou um prêmio ou que o banco precisa que clique em um botão."
+        " Essas mensagens podem parecer verdadeiras, mas são golpes. Esse tipo de golpe é chamado de phishing (fala-se “fíxin”),"
+        "que é quando alguém tenta roubar seus dados fingindo ser uma empresa confiável.", 0.03
+    )
+    texto(
+        "\nEssas mensagens geralmente pedem que a senhora ou o senhor clique em um link. Mas o que é um link?"
+        " Link é aquele trecho da mensagem em que se pode clicar, geralmente azul ou sublinhado, que leva para outro site ou página da internet."
+        " Muitos links são seguros, mas outros podem levar a páginas falsas, que tentam roubar suas informações.", 0.03
+    )
+    texto("\nComo se proteger?", 0.03)
+    texto("Para se proteger, é importante tomar alguns cuidados simples:", 0.02)
+    texto ("•Nunca clique em links de mensagens que o(a) senhor(a) não estava esperando, mesmo que pareçam vir de bancos ou lojas conhecidas."
+           "\n•Sempre verifique se o site que está acessando começa com https://, pois isso mostra que é um site mais seguro."
+           "\n•Use senhas fortes, misturando letras maiúsculas, minúsculas, números e símbolos."
+           "\n•Não compartilhe suas senhas com ninguém, nem mesmo com amigos ou familiares."
+           "\n•Mantenha o antivírus sempre instalado e atualizado no celular ou no computador. Mas o que é um antivírus?", 0.03)
+    texto("\nO que é um antivírus? E o que são vírus e malware?", 0.03)
+    texto("\n•Vírus de computador são programas maliciosos, ou seja, criados para causar danos."
+          " Eles podem apagar arquivos, roubar informações ou deixar o aparelho mais lento.", 0.03)
+    texto("•Malware é um nome mais geral para qualquer tipo de programa malicioso (como vírus, espiões ou outros).", 0.03)
+    texto("•Antivírus é o programa que ajuda a proteger o computador ou celular desses problemas. Ele identifica e bloqueia essas ameaças.", 0.03)
+    texto("\nTambém é importante atualizar o aparelho com frequência, pois as atualizações trazem"
+          " melhorias e fecham possíveis portas que os criminosos usam para invadir os sistemas.", 0.03)
 
-    texto("Agora, vamos responder algumas perguntas para fixar o que aprendemos.\n", 0.03)
+    texto("\nAgora, vamos responder algumas perguntas para fixar o que aprendemos.\n", 0.03)
 
     perguntas = [
         ("1. O que é segurança digital?",
@@ -277,6 +318,7 @@ def modulo1(usuarios, emailLogin):
         salvarUsuarios(usuarios)
     texto("Módulo 1 finalizado. Parabéns por avançar no seu aprendizado!", 0.03)
 
+def menu_opcoes():
     while True:
         print("\nO que deseja fazer agora?")
         print("1 - Ir para o próximo módulo") 
@@ -285,20 +327,11 @@ def modulo1(usuarios, emailLogin):
         escolha = input("Digite o número da opção desejada: ").strip()
 
         if escolha == "1":
-            return "next" 
+            return "modulo2" 
         elif escolha == "2":
             break
         elif escolha == "3":
             return "quit" 
-        else:
-            print("Opção inválida. Tente novamente.")
-
-        if escolha == "1":
-            modulo1(usuarios, emailLogin)
-            return  
-        elif escolha == "2":
-            texto("Até a próxima! Seu progresso foi salvo.", 0.03)
-            return
         else:
             print("Opção inválida. Tente novamente.")
 
@@ -316,7 +349,7 @@ if resposta0 == "Sim":
         emailLogin = cadastro()
         usuarios = carregarUsuarios()
         inicio = time.time()
-        texto(f"Bem-vindo(a), {usuarios[emailLogin]['nome']}! Você está pronto para começar o curso.", 0.03)
+        texto(f"Bem-vindo(a), {usuarios[emailLogin]['nome']}! Você está pronto(a) para começar o curso.", 0.03)
 
     elif resposta1 in ["Não", "Nao"]:
         texto("\nTudo bem! Estaremos aqui quando você estiver pronto(a). \n", 0.03)
@@ -328,10 +361,20 @@ if resposta0 == "Sim":
 else:
     usuarios, emailLogin, inicio = login()
 
-if usuarios and emailLogin:
-    modulo1(usuarios, emailLogin)
-    input("\nPressione Enter quando quiser sair do sistema...")
-    logout(usuarios, emailLogin, inicio)
+while True:
+        modulo1(usuarios, emailLogin)
+        
+        acao = menu_opcoes()
+        
+        if acao == "modulo2":
+            modulo2(usuarios, emailLogin)
+        elif acao == "refazer":
+            continue
+        elif acao == "quit":
+            texto("Até a próxima! Seu progresso foi salvo.", 0.03)
+            break
+        input("\nPressione Enter quando quiser sair do sistema...")
+        logout(usuarios, emailLogin, inicio)
 
 def modulo2(usuarios, emailLogin):
     progresso = usuarios[emailLogin].get("progresso", {})
@@ -404,16 +447,17 @@ def modulo2(usuarios, emailLogin):
 
     while True:
         print("\nO que deseja fazer agora?")
-        print("1 - Refazer o módulo")
-        print("2 - Salvar e sair")
+        print("1 - Ir para o próximo módulo") 
+        print("2 - Refazer o módulo")
+        print("3 - Salvar e sair")
         escolha = input("Digite o número da opção desejada: ").strip()
 
         if escolha == "1":
-            modulo2(usuarios, emailLogin)
-            return  
+            return "modulo3" 
         elif escolha == "2":
-            texto("Até a próxima! Seu progresso foi salvo.", 0.03)
-            return
+            break
+        elif escolha == "3":
+            return "quit" 
         else:
             print("Opção inválida. Tente novamente.")
 
@@ -494,16 +538,17 @@ def modulo3(usuarios, emailLogin):
 
     while True:
         print("\nO que deseja fazer agora?")
-        print("1 - Refazer o módulo")
-        print("2 - Salvar e sair")
+        print("1 - Ir para o próximo módulo") 
+        print("2 - Refazer o módulo")
+        print("3 - Salvar e sair")
         escolha = input("Digite o número da opção desejada: ").strip()
 
         if escolha == "1":
-            modulo3(usuarios, emailLogin)
-            return  
+            return "modulo4" 
         elif escolha == "2":
-            texto("Até a próxima! Seu progresso foi salvo.", 0.03)
-            return
+            break
+        elif escolha == "3":
+            return "quit" 
         else:
             print("Opção inválida. Tente novamente.")
 
@@ -572,16 +617,17 @@ def modulo4(usuarios, emailLogin):
 
     while True:
         print("\nO que deseja fazer agora?")
-        print("1 - Refazer o módulo")
-        print("2 - Salvar e sair")
+        print("1 - Ir para o próximo módulo") 
+        print("2 - Refazer o módulo")
+        print("3 - Salvar e sair")
         escolha = input("Digite o número da opção desejada: ").strip()
 
         if escolha == "1":
-            modulo4(usuarios, emailLogin)
-            return  
+            return "modulo5" 
         elif escolha == "2":
-            texto("Até a próxima! Seu progresso foi salvo.", 0.03)
-            return
+            break
+        elif escolha == "3":
+            return "quit" 
         else:
             print("Opção inválida. Tente novamente.")
 
@@ -650,16 +696,17 @@ def modulo5(usuarios, emailLogin):
 
     while True:
         print("\nO que deseja fazer agora?")
-        print("1 - Refazer o módulo")
-        print("2 - Salvar e sair")
+        print("1 - Ir para o próximo módulo") 
+        print("2 - Refazer o módulo")
+        print("3 - Salvar e sair")
         escolha = input("Digite o número da opção desejada: ").strip()
 
         if escolha == "1":
-            modulo5(usuarios, emailLogin)
-            return  
+            return "prova_final" 
         elif escolha == "2":
-            texto("Até a próxima! Seu progresso foi salvo.", 0.03)
-            return
+            break
+        elif escolha == "3":
+            return "quit" 
         else:
             print("Opção inválida. Tente novamente.")
 
@@ -714,7 +761,6 @@ def prova_final(usuarios, emailLogin):
     acertos = sum(perguntar(p, alts, resp) for p, alts, resp in perguntas)
     print(f"\nVocê acertou {acertos} de {len(perguntas)} perguntas.")
 
-    # Definir o número mínimo de acertos para aprovação (70% de 10 questões = 7 acertos)
     minimo_necessario = len(perguntas) * 0.7
     aprovado = acertos >= minimo_necessario
 

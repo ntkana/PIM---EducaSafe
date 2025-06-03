@@ -3,7 +3,7 @@
         "nome": "John Doe",
         "sexo": "Masculino",
         "idade": 60,
-        "conhecimento": "Não",
+        "conhecimento": "N\u00c3\u00a3o",
         "senha": "12345678Jd",
         "tempos": [
             83.37
