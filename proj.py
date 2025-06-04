@@ -26,8 +26,8 @@ def welcome():
     )
     texto(
         "+ Ao longo do curso, você encontrará lições simples e práticas, com quizzes e desafios divertidos "
-        "para testar seus conhecimentos.\nCada módulo tem, em média, 1h30 de duração, totalizando 8 horas de curso. "
-        "Ao final, você receberá um certificado de conclusão! Também poderá receber um de 100% de aproveitamento, caso gabarite tudo.", 0.03
+        "para testar seus conhecimentos.\nCada módulo tem, em média, 2h de duração, totalizando 10 horas de curso. "
+        "Ao final, você receberá um certificado de conclusão!", 0.03
     )
     texto(
         ">>> Lembre-se: você pode aprender no seu próprio ritmo e repetir lições sempre que quiser. "
@@ -199,26 +199,26 @@ def modulo1(usuarios, emailLogin):
     texto("• Quais são os golpes mais comuns na internet;", 0.02)
     texto("• Como se proteger com práticas simples no dia a dia.\n", 0.02)
     texto(
-        "\nNosso objetivo é que o(a) senhor(a) se sinta mais seguro e confiante ao usar a internet, " 
+        "\nNosso objetivo é que o(a) senhor(a) se sinta mais seguro e confiante ao usar a internet, "
         "aproveitando tudo o que a tecnologia pode oferecer — sem medo e sem riscos.", 0.03
         )
     texto("\n>>>Vamos começar!<<<", 0.02)
     texto("\nHoje em dia, a internet está presente em muitos momentos de nossas vidas.", 0.03)
     texto(
-        "Muitas senhoras e senhores usam o celular ou o computador para falar com a família, " 
+        "Muitas senhoras e senhores usam o celular ou o computador para falar com a família, "
         "ver vídeos, fazer compras, ler notícias e até mesmo cuidar da saúde.", 0.03
         )
     texto(
         "\nPor isso, é importante aprender como se proteger nesse ambiente digital. Isso se chama segurança digital."
         " Segurança digital quer dizer cuidar bem dos seus dados e informações pessoais, como nome, documentos, contas bancárias e senhas,"
-        "para que pessoas mal-intencionadas (os chamados criminosos virtuais) não consigam roubar essas informações ou aplicar golpes.", 0.03
+        " para que pessoas mal-intencionadas (os chamados criminosos virtuais) não consigam roubar essas informações ou aplicar golpes.", 0.03
     )
     texto("\nO que são golpes online?", 0.04)
     texto(
         "\nNa internet, às vezes aparecem mensagens falsas que tentam enganar o(a) senhor(a)."
         "Um exemplo comum são os e-mails ou mensagens falsas que dizem que a pessoa ganhou um prêmio ou que o banco precisa que clique em um botão."
         " Essas mensagens podem parecer verdadeiras, mas são golpes. Esse tipo de golpe é chamado de phishing (fala-se “fíxin”),"
-        "que é quando alguém tenta roubar seus dados fingindo ser uma empresa confiável.", 0.03
+        " que é quando alguém tenta roubar seus dados fingindo ser uma empresa confiável.", 0.03
     )
     texto(
         "\nEssas mensagens geralmente pedem que a senhora ou o senhor clique em um link. Mas o que é um link?"
@@ -318,7 +318,6 @@ def modulo1(usuarios, emailLogin):
         salvarUsuarios(usuarios)
     texto("Módulo 1 finalizado. Parabéns por avançar no seu aprendizado!", 0.03)
 
-def menu_opcoes():
     while True:
         print("\nO que deseja fazer agora?")
         print("1 - Ir para o próximo módulo") 
@@ -327,11 +326,20 @@ def menu_opcoes():
         escolha = input("Digite o número da opção desejada: ").strip()
 
         if escolha == "1":
-            return "modulo2" 
+            return "next" 
         elif escolha == "2":
             break
         elif escolha == "3":
             return "quit" 
+        else:
+            print("Opção inválida. Tente novamente.")
+
+        if escolha == "1":
+            modulo1(usuarios, emailLogin)
+            return  
+        elif escolha == "2":
+            texto("Até a próxima! Seu progresso foi salvo.", 0.03)
+            return
         else:
             print("Opção inválida. Tente novamente.")
 
@@ -349,7 +357,7 @@ if resposta0 == "Sim":
         emailLogin = cadastro()
         usuarios = carregarUsuarios()
         inicio = time.time()
-        texto(f"Bem-vindo(a), {usuarios[emailLogin]['nome']}! Você está pronto(a) para começar o curso.", 0.03)
+        texto(f"Bem-vindo(a), {usuarios[emailLogin]['nome']}! Você está pronto para começar o curso.", 0.03)
 
     elif resposta1 in ["Não", "Nao"]:
         texto("\nTudo bem! Estaremos aqui quando você estiver pronto(a). \n", 0.03)
@@ -361,20 +369,10 @@ if resposta0 == "Sim":
 else:
     usuarios, emailLogin, inicio = login()
 
-while True:
-        modulo1(usuarios, emailLogin)
-        
-        acao = menu_opcoes()
-        
-        if acao == "modulo2":
-            modulo2(usuarios, emailLogin)
-        elif acao == "refazer":
-            continue
-        elif acao == "quit":
-            texto("Até a próxima! Seu progresso foi salvo.", 0.03)
-            break
-        input("\nPressione Enter quando quiser sair do sistema...")
-        logout(usuarios, emailLogin, inicio)
+if usuarios and emailLogin:
+    modulo1(usuarios, emailLogin)
+    input("\nPressione Enter quando quiser sair do sistema...")
+    logout(usuarios, emailLogin, inicio)
 
 def modulo2(usuarios, emailLogin):
     progresso = usuarios[emailLogin].get("progresso", {})
@@ -447,17 +445,16 @@ def modulo2(usuarios, emailLogin):
 
     while True:
         print("\nO que deseja fazer agora?")
-        print("1 - Ir para o próximo módulo") 
-        print("2 - Refazer o módulo")
-        print("3 - Salvar e sair")
+        print("1 - Refazer o módulo")
+        print("2 - Salvar e sair")
         escolha = input("Digite o número da opção desejada: ").strip()
 
         if escolha == "1":
-            return "modulo3" 
+            modulo2(usuarios, emailLogin)
+            return  
         elif escolha == "2":
-            break
-        elif escolha == "3":
-            return "quit" 
+            texto("Até a próxima! Seu progresso foi salvo.", 0.03)
+            return
         else:
             print("Opção inválida. Tente novamente.")
 
@@ -538,17 +535,16 @@ def modulo3(usuarios, emailLogin):
 
     while True:
         print("\nO que deseja fazer agora?")
-        print("1 - Ir para o próximo módulo") 
-        print("2 - Refazer o módulo")
-        print("3 - Salvar e sair")
+        print("1 - Refazer o módulo")
+        print("2 - Salvar e sair")
         escolha = input("Digite o número da opção desejada: ").strip()
 
         if escolha == "1":
-            return "modulo4" 
+            modulo3(usuarios, emailLogin)
+            return  
         elif escolha == "2":
-            break
-        elif escolha == "3":
-            return "quit" 
+            texto("Até a próxima! Seu progresso foi salvo.", 0.03)
+            return
         else:
             print("Opção inválida. Tente novamente.")
 
@@ -617,17 +613,16 @@ def modulo4(usuarios, emailLogin):
 
     while True:
         print("\nO que deseja fazer agora?")
-        print("1 - Ir para o próximo módulo") 
-        print("2 - Refazer o módulo")
-        print("3 - Salvar e sair")
+        print("1 - Refazer o módulo")
+        print("2 - Salvar e sair")
         escolha = input("Digite o número da opção desejada: ").strip()
 
         if escolha == "1":
-            return "modulo5" 
+            modulo4(usuarios, emailLogin)
+            return  
         elif escolha == "2":
-            break
-        elif escolha == "3":
-            return "quit" 
+            texto("Até a próxima! Seu progresso foi salvo.", 0.03)
+            return
         else:
             print("Opção inválida. Tente novamente.")
 
@@ -696,17 +691,16 @@ def modulo5(usuarios, emailLogin):
 
     while True:
         print("\nO que deseja fazer agora?")
-        print("1 - Ir para o próximo módulo") 
-        print("2 - Refazer o módulo")
-        print("3 - Salvar e sair")
+        print("1 - Refazer o módulo")
+        print("2 - Salvar e sair")
         escolha = input("Digite o número da opção desejada: ").strip()
 
         if escolha == "1":
-            return "prova_final" 
+            modulo5(usuarios, emailLogin)
+            return  
         elif escolha == "2":
-            break
-        elif escolha == "3":
-            return "quit" 
+            texto("Até a próxima! Seu progresso foi salvo.", 0.03)
+            return
         else:
             print("Opção inválida. Tente novamente.")
 
