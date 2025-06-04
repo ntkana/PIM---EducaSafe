@@ -318,6 +318,7 @@ def modulo1(usuarios, emailLogin):
         salvarUsuarios(usuarios)
     texto("Módulo 1 finalizado. Parabéns por avançar no seu aprendizado!", 0.03)
 
+    saida = ""
     while True:
         print("\nO que deseja fazer agora?")
         print("1 - Ir para o próximo módulo") 
@@ -326,22 +327,17 @@ def modulo1(usuarios, emailLogin):
         escolha = input("Digite o número da opção desejada: ").strip()
 
         if escolha == "1":
-            return "next" 
+            saida = "next"
+            break
         elif escolha == "2":
+            modulo1(usuarios, emailLogin)
             break
         elif escolha == "3":
-            return "quit" 
-        else:
-            print("Opção inválida. Tente novamente.")
-
-        if escolha == "1":
-            modulo1(usuarios, emailLogin)
-            return  
-        elif escolha == "2":
+            saida = "quit" 
             texto("Até a próxima! Seu progresso foi salvo.", 0.03)
-            return
         else:
             print("Opção inválida. Tente novamente.")
+    return saida 
 
 usuarios = {}
 emailLogin = None
@@ -445,18 +441,23 @@ def modulo2(usuarios, emailLogin):
 
     while True:
         print("\nO que deseja fazer agora?")
-        print("1 - Refazer o módulo")
-        print("2 - Salvar e sair")
+        print("1 - Ir para o próximo módulo") 
+        print("2 - Refazer o módulo")
+        print("3 - Salvar e sair")
         escolha = input("Digite o número da opção desejada: ").strip()
 
         if escolha == "1":
-            modulo2(usuarios, emailLogin)
-            return  
+            saida = "next"
+            break
         elif escolha == "2":
+            modulo2(usuarios, emailLogin)
+            break
+        elif escolha == "3":
+            saida = "quit" 
             texto("Até a próxima! Seu progresso foi salvo.", 0.03)
-            return
         else:
             print("Opção inválida. Tente novamente.")
+    return saida 
 
 def modulo3(usuarios, emailLogin):
     progresso = usuarios[emailLogin].get("progresso", {})
@@ -535,18 +536,23 @@ def modulo3(usuarios, emailLogin):
 
     while True:
         print("\nO que deseja fazer agora?")
-        print("1 - Refazer o módulo")
-        print("2 - Salvar e sair")
+        print("1 - Ir para o próximo módulo") 
+        print("2 - Refazer o módulo")
+        print("3 - Salvar e sair")
         escolha = input("Digite o número da opção desejada: ").strip()
 
         if escolha == "1":
-            modulo3(usuarios, emailLogin)
-            return  
+            saida = "next"
+            break
         elif escolha == "2":
+            modulo3(usuarios, emailLogin)
+            break
+        elif escolha == "3":
+            saida = "quit" 
             texto("Até a próxima! Seu progresso foi salvo.", 0.03)
-            return
         else:
             print("Opção inválida. Tente novamente.")
+    return saida 
 
 def modulo4(usuarios, emailLogin):
     progresso = usuarios[emailLogin].get("progresso", {})
@@ -613,18 +619,23 @@ def modulo4(usuarios, emailLogin):
 
     while True:
         print("\nO que deseja fazer agora?")
-        print("1 - Refazer o módulo")
-        print("2 - Salvar e sair")
+        print("1 - Ir para o próximo módulo") 
+        print("2 - Refazer o módulo")
+        print("3 - Salvar e sair")
         escolha = input("Digite o número da opção desejada: ").strip()
 
         if escolha == "1":
-            modulo4(usuarios, emailLogin)
-            return  
+            saida = "next"
+            break
         elif escolha == "2":
+            modulo4(usuarios, emailLogin)
+            break
+        elif escolha == "3":
+            saida = "quit" 
             texto("Até a próxima! Seu progresso foi salvo.", 0.03)
-            return
         else:
             print("Opção inválida. Tente novamente.")
+    return saida 
 
 def modulo5(usuarios, emailLogin):
     progresso = usuarios[emailLogin].get("progresso", {})
@@ -691,18 +702,23 @@ def modulo5(usuarios, emailLogin):
 
     while True:
         print("\nO que deseja fazer agora?")
-        print("1 - Refazer o módulo")
-        print("2 - Salvar e sair")
+        print("1 - Ir para o próximo módulo") 
+        print("2 - Refazer o módulo")
+        print("3 - Salvar e sair")
         escolha = input("Digite o número da opção desejada: ").strip()
 
         if escolha == "1":
-            modulo5(usuarios, emailLogin)
-            return  
+            saida = "next"
+            break
         elif escolha == "2":
+            modulo5(usuarios, emailLogin)
+            break
+        elif escolha == "3":
+            saida = "quit" 
             texto("Até a próxima! Seu progresso foi salvo.", 0.03)
-            return
         else:
             print("Opção inválida. Tente novamente.")
+    return saida 
 
 def prova_final(usuarios, emailLogin):
     progresso = usuarios[emailLogin].get("progresso", {})
